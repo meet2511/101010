@@ -16,6 +16,53 @@
             scroll-behavior: smooth;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: center; /* Aligns text and logo to opposite sides */
+            align-items: center; /* Vertically aligns items */
+            padding: 10px; /* Adds spacing inside the header */
+            max-width: 1200px; /* Restricts the width for better readability */
+            margin: 0 auto; /* Centers the content horizontally */
+        }
+        
+        .header-content div {
+            max-width: 70%; /* Ensures the text and button don’t take up too much space */
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem; /* Adjust heading size */
+            margin: 0 0 10px; /* Adds spacing below the heading */
+        }
+        
+        .header-content p {
+            font-size: 1.2rem; /* Ensures the subheading is smaller */
+            margin-bottom: 20px; /* Spacing between paragraph and button */
+        }
+        
+        .header-content .hero-button {
+            display: inline-block;
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+        
+
+        .top-right-logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            height: 60px; /* Adjust size as needed */
+            width: auto;
+            z-index: 1001; /* Ensure it stays above other elements */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .top-right-logo:hover {
+            transform: scale(1.1); /* Slight zoom-in effect */
+            opacity: 0.9;
+        }
+        
+        
         header {
             background: linear-gradient(to right, #ff8402, #ff8402);
             color: white;
@@ -191,11 +238,16 @@
 
 <body>
     <header>
-        <h1>Welcome to the Nagar Prathmik Sikshan Samiti</h1>
-        <p>Your gateway to smarter school management and analytics</p>
-        <!-- <a href="#map" class="hero-button">Explore the Map</a> -->
-        <a href="https://mandevgames.github.io/0100101010010100101/" class="hero-button" style="padding: 15px 25px; font-size: 16px;">Explore the Dashboard</a>
+        <div class="header-content">
+            <div>
+                <h1>Welcome to the Nagar Prathmik Sikshan Samiti</h1>
+                <p>Your gateway to smarter school management and analytics</p>
+                <a href="https://mandevgames.github.io/0100101010010100101/" class="hero-button" style="padding: 15px 25px; font-size: 16px;">Explore the Dashboard</a>
+            </div>
+            <img src="C:\Users\MEET\Desktop\Welcome to AMC School Board_files\logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
+        </div>
     </header>
+    
     
     <nav>
         <a href="#home">Home</a>
