@@ -16,6 +16,36 @@
             scroll-behavior: smooth;
         }
 
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ff8402; /* Full orange background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .splash-screen img {
+            width: 200px;
+            align-items: center;
+            height: auto;
+            animation: zoomIn 2s ease-out; /* Zoom effect on image */
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(2);
+            }
+        }
+
         .header-content {
             display: flex;
             justify-content: center; /* Aligns text and logo to opposite sides */
@@ -237,6 +267,12 @@
 </head>
 
 <body>
+
+    <div class="splash-screen" id="splash-screen">
+        <img src="logo_08.jpg" alt="Splash Image" /> <!-- Replace with your image URL -->
+    </div>
+
+
     <header>
         <div class="header-content">
             <div>
@@ -244,7 +280,7 @@
                 <p>Your gateway to smarter school management and analytics</p>
                 <a href="https://mandevgames.github.io/0100101010010100101/" class="hero-button" style="padding: 15px 25px; font-size: 16px;">Explore the Dashboard</a>
             </div>
-            <img src="logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
+            <img src="C:\Users\MEET\Desktop\Welcome to AMC School Board_files\logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
         </div>
     </header>
     
@@ -289,6 +325,17 @@
     <footer>
         <p>&copy; 2025 Smart School Dashboard. All rights reserved.</p>
     </footer>
+
+
+    <script>
+        // Hide the splash screen after 3 seconds
+        setTimeout(function () {
+            document.getElementById("splash-screen").style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable body scroll
+        }, 3000);
+    </script>
+
+    
 </body>
 
 </html>
