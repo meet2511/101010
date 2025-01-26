@@ -54,9 +54,9 @@
             max-width: 1200px; /* Restricts the width for better readability */
             margin: 0 auto; /* Centers the content horizontally */
         }
-        
+
         .header-content div {
-            max-width: 70%; /* Ensures the text and button don’t take up too much space */
+            max-width: 70%; /* Ensures the text and button don't take up too much space */
         }
         
         .header-content h1 {
@@ -180,8 +180,8 @@
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
-        }
-    
+        } 
+
         .stat {
             background: #ffffff;
             padding: 20px 40px;
@@ -207,6 +207,13 @@
             font-size: 1rem;
             color: #666;
         }
+		
+		.stat span {
+			font-size: 2.5rem; /* Adjust as needed */
+			font-weight: bold;
+			color: #ff8402; /* Match your theme color */
+		}
+		
         .content {
             text-align: center;
             margin: 40px auto;
@@ -344,23 +351,26 @@
     </nav>
 
     <div class="stats-section">
-        <h2>Our Impact</h2>
-        <p>Here are some key statistics about our progress in transforming education:</p>
-        <div class="stats-container">
-            <div class="stat">
-                <h3>281</h3>
-                <p>Total Municipal Schools</p>
-            </div>
-            <div class="stat">
-                <h3>128</h3>
-                <p>Smart Schools</p>
-            </div>
-            <div class="stat">
-                <h3>46%</h3>
-                <p>Schools Upgraded to Smart</p>
-            </div>
+    <h2>Our Impact</h2>
+    <p>Here are some key statistics about our progress in transforming education:</p>
+    <div class="stats-container">
+        <div class="stat">
+            <h3><span id="stat1">0</span></h3>
+            <p>Total Municipal Schools</p>
+        </div>
+        
+        <div class="stat">
+            <h3><span id="stat2">0</span></h3>
+            <p>Smart Schools</p>
+        </div>
+        
+        <div class="stat">
+            <h3><span id="stat3">0</span>%</h3>
+            <p>Schools Upgraded to Smart</p>
         </div>
     </div>
+</div>
+
 
     <div id="map" class="map-section">
         <h2>Explore Ahmedabad Municipal Smart Schools</h2>
@@ -395,8 +405,32 @@
             // Redirect to a dedicated full-screen map page
             window.location.href = "https://mandevgames.github.io/0100101010010100101/";
         }
+		
+		function animateValue(obj, start, end, duration) {
+			let startTimestamp = null;
+			const step = (timestamp) => {
+			if (!startTimestamp) startTimestamp = timestamp;
+			const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+			const currentValue = Math.floor(progress * (end - start) + start);
 
-        
+			obj.textContent = currentValue;
+
+				if (progress < 1) {
+					window.requestAnimationFrame(step);
+				}
+			};
+			window.requestAnimationFrame(step);
+		}
+
+		const obj1 = document.getElementById("stat1");
+		animateValue(obj1, 0, 281, 5000);
+
+		const obj2 = document.getElementById("stat2");
+		animateValue(obj2, 0, 128, 5000);
+
+		const obj3 = document.getElementById("stat3");
+		animateValue(obj3, 0, 46, 5000);
+          
     </script>
 
     
