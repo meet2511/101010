@@ -33,7 +33,7 @@
             width: 200px;
             align-items: center;
             height: auto;
-            animation: zoomIn 2s ease-out; /* Zoom effect on image */
+            animation: zoomIn 3s ease-out; /* Zoom effect on image */
         }
 
         @keyframes zoomIn {
@@ -42,7 +42,7 @@
             }
 
             to {
-                transform: scale(2);
+                transform: scale(3);
             }
         }
 
@@ -380,7 +380,7 @@
         setTimeout(function () {
             document.getElementById("splash-screen").style.display = "none";
             document.body.style.overflow = "auto"; // Re-enable body scroll
-        }, 3000);
+        }, 2000);
 
         document.getElementById('exploreBtn').addEventListener('click', function() {
             window.scrollTo(0, document.body.scrollHeight);
