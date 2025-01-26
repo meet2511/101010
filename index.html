@@ -286,6 +286,26 @@
         .map-section {
             animation: fadeInUp 1s ease-out;
         }
+
+        .full-screen-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #ff8402;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            transform: translateY(-50px);
+        }
+    
+        .full-screen-button:hover {
+            background: #eca960;
+            transform: scale(1.05);
+            transform: translateY(-50px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 
@@ -345,8 +365,11 @@
                 src="https://mandevgames.github.io/0100101010010100101/"
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
+        <button class="full-screen-button" onclick="goFullScreen()">View Full Screen</button>
     </div>
 
+
+   
     <footer>
         <p>&copy; 2025 Smart School Dashboard. All rights reserved.</p>
     </footer>
@@ -362,6 +385,11 @@
         document.getElementById('exploreBtn').addEventListener('click', function() {
             window.scrollTo(0, document.body.scrollHeight);
         });
+
+        function goFullScreen() {
+            // Redirect to a dedicated full-screen map page
+            window.location.href = "https://mandevgames.github.io/0100101010010100101/";
+        }
     </script>
 
     
