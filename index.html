@@ -124,6 +124,7 @@
             text-decoration: none;
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s;
+            scroll-behavior: smooth;
         }
 
         .hero-button:hover {
@@ -218,12 +219,12 @@
             color: #c97216;
         }
 
-        .map-section {
+        /*.map-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 50px 20px;
-            background: #ffffff;
+            background: #ff8402;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
             border-radius: 20px 20px 0 0;
             margin-top: -20px;
@@ -237,7 +238,29 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }*/
+
+        .map-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center content vertically and horizontally */
+            width: 100%;
+            height: 100vh; /* Full screen height */
+            padding: 0;
+            margin: 0;
+            background: #ff8402; /* Retain the background color */
         }
+        
+        .map-container {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0; /* Remove rounded corners for full-screen effect */
+            box-shadow: none; /* Remove shadow for a seamless look */
+            overflow: hidden;
+        }
+        
 
         footer {
             background-color: #333;
@@ -278,7 +301,8 @@
             <div>
                 <h1>Welcome to the Nagar Prathmik Sikshan Samiti</h1>
                 <p>Your gateway to smarter school management and analytics</p>
-                <a href="https://mandevgames.github.io/0100101010010100101/" class="hero-button" style="padding: 15px 25px; font-size: 16px;">Explore the Dashboard</a>
+                <a class="hero-button" style="padding: 15px 25px; font-size: 16px;" id="exploreBtn">Explore the Dashboard</a> <!--https://mandevgames.github.io/0100101010010100101/ -->
+
             </div>
             <img src="C:\Users\MEET\Desktop\Welcome to AMC School Board_files\logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
             <img src="logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
@@ -314,7 +338,7 @@
     </div>
 
     <div id="map" class="map-section">
-        <h2>Explore Ahmedabad Municipal Smart schools</h2>
+        <h2>Explore Ahmedabad Municipal Smart Schools</h2>
         <p>Below is the map of Ahmedabad to help you explore our connected schools.</p>
         <div class="map-container">
             <iframe
@@ -334,6 +358,10 @@
             document.getElementById("splash-screen").style.display = "none";
             document.body.style.overflow = "auto"; // Re-enable body scroll
         }, 3000);
+
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
     </script>
 
     
