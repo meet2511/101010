@@ -335,8 +335,10 @@
         <a href="#home">Home</a>
         <a href="Aboutus.html">About</a>
         <a href="https://mandevgames.github.io/0100101010010100101/" target="_blank">Dashboard</a>
+        <!-- <a href="login.html">Login</a> -->
         <!-- <a href="#features">Features</a> -->
-        <a href="#contact">Contact</a>
+        <a href="login.html">Logout</a>
+
     </nav>
 
     <div class="stats-section">
@@ -384,13 +386,15 @@
         }, 2000);
 
         document.getElementById('exploreBtn').addEventListener('click', function() {
-            window.scrollTo(0, document.body.scrollHeight);
+            document.querySelector('#map').scrollIntoView({ behavior: 'smooth' });
         });
 
         function goFullScreen() {
             // Redirect to a dedicated full-screen map page
             window.location.href = "https://mandevgames.github.io/0100101010010100101/";
         }
+
+        
     </script>
 
     
