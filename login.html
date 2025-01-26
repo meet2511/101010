@@ -9,7 +9,7 @@
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #FF9933, #ffffff, #3ec431); /* Indian flag colors */
+            background: linear-gradient(to bottom, #FF9933, #ffffff, #138808); /* Indian flag colors */
             color: #333;
             display: flex;
             justify-content: center;
@@ -82,19 +82,50 @@
         .login-container a:hover {
             text-decoration: underline;
         }
+
+        .error-message {
+            color: #ff4d4d;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="dashboard.html" method="post">
-            <input type="text" placeholder="Username" name="username" required>
-            <input type="password" placeholder="Password" name="password" required>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
         <p>Don't have an account? <a href="register.html">Sign up</a></p>
+        <p id="errorMessage" class="error-message"></p>
     </div>
+
+    <script>
+        // Predefined email and password for login
+        const predefinedEmail = 'user@example.com';
+        const predefinedPassword = 'password123';
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form from submitting the default way
+
+            // Get the values entered by the user
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the credentials match the predefined ones
+            if (email === predefinedEmail && password === predefinedPassword) {
+                // Redirect to the home page (index.html) if login is successful
+                window.location.href = 'index.html';
+            } else {
+                // Display an error message if the credentials are incorrect
+                document.getElementById('errorMessage').textContent = 'Invalid email or password. Please try again.';
+            }
+        });
+    </script>
 </body>
 
 </html>
