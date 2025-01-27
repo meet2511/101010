@@ -93,16 +93,17 @@
             opacity: 0.9;
         }
         
-        
+    
         header {
-            background: linear-gradient(to right, #ff8402, #ff8402);
-            background-image: url(homepage.jpg);
-            background-position: center;
-            color: rgb(255, 255, 255);
-            padding: 50px 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+			background: linear-gradient(to right, #ff8402, #ff8402);
+			background-image: url('sample.jpg'); /* Initial background image */
+			background-position: center;
+			color: rgb(255, 255, 255);
+			padding: 50px 20px;
+			text-align: center;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: background-image 1s ease-out; /* Smooth transition for background change */
+		}
         
         header h1 {
             margin: 0;
@@ -393,6 +394,20 @@
 
 
     <script>
+
+        const images = ['Sample 0.jpg', 'Sample 1.jpg', 'Sample 2.jpg', 'Sample 3.jpg', 'Sample 4.jpg', 'Sample 5.jpg', 'Sample 6.jpg', 'Sample 7.jpg', 'Sample 8.jpg'];
+		let currentIndex = 0;
+
+        function changeBackgroundImage() 
+		{		
+            document.querySelector('header').style.backgroundImage = `url('${images[currentIndex]}')`;
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        changeBackgroundImage();
+
+		setInterval(changeBackgroundImage, 3500);
+
         // Hide the splash screen after 3 seconds
         setTimeout(function () {
             document.getElementById("splash-screen").style.display = "none";
