@@ -4,128 +4,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Smart School Dashboard</title>
-    <style>
+    <title>Smart School Dashboard - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>   
+
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #FF9933, #ffffff, #138808); /* Indian flag colors */
+            font-family: 'Poppins', Georgia;
+            background: #f9fafe;
             color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ff8402; /* Full orange background */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            z-index: 10000;
         }
 
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .splash-screen img {
+            width: 200px;
+            align-items: center;
+            height: auto;
+            animation: zoomIn 3s ease-out; /* Zoom effect on image */
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(3);
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center; /* Aligns text and logo to opposite sides */
+            align-items: center; /* Vertically aligns items */
+            padding: 10px; /* Adds spacing inside the header */
+            max-width: 1200px; /* Restricts the width for better readability */
+            margin: 0 auto; /* Centers the content horizontally */
+        }
+
+        .header-content div {
+            max-width: 70%; /* Ensures the text and button don’t take up too much space */
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem; /* Adjust heading size */
+            margin: 0 0 10px; /* Adds spacing below the heading */
+        }
+        
+        .header-content p {
+            font-size: 1.2rem; /* Ensures the subheading is smaller */
+            margin-bottom: 20px; /* Spacing between paragraph and button */
+        }
+        
+        .header-content .hero-button {
+            display: inline-block;
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+        
+
+        .top-right-logo {
+            position: fixed;
+            top: 5px;
+            right: 10px;
+            height: 60px; /* Adjust size as needed */
+            width: auto;
+            z-index: 1001; /* Ensure it stays above other elements */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+            border-radius: 15px 15px 15px 15px;
+        }
+        
+        .top-right-logo:hover {
+            transform: scale(1.1); /* Slight zoom-in effect */
+            opacity: 0.9;
+        }
+        
+        
+        header {
+            background: linear-gradient(to right, #ff8402, #ff8402);
+            background-image: url(homepage.jpg);
+            background-position: center;
+            color: rgb(255, 255, 255);
+            padding: 50px 20px;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
         }
 
-        .login-container h1 {
-            margin-bottom: 20px;
+        header p {
+            margin: 10px 0 20px;
+            font-size: 1.2rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+            
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        .hero-button:hover {
+            background: #eca960;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ff8402;
+        }
+        .stats-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: #f1f4f9;
+            color: #333;
+        }
+    
+        .stats-section h2 {
             font-size: 2rem;
-            color: #FF9933; /* Saffron color for the heading */
+            margin-bottom: 20px;
+            color: #ff8402;
+        }
+    
+        .stats-section p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+    
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        } 
+
+        .stat {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+    
+        .stat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+    
+        .stat h3 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #ff8402;
+        }
+    
+        .stat p {
+            margin: 10px 0 0;
+            font-size: 1rem;
+            color: #666;
+        }
+		
+		.stat span {
+			font-size: 2.5rem; /* Adjust as needed */
+			font-weight: bold;
+			color: #ff8402; /* Match your theme color */
+		}
+		
+        .content {
+            text-align: center;
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 1200px;
         }
 
-        .login-container form {
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #c97216;
+        }
+
+        /*.map-section {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            padding: 50px 20px;
+            background: #ff8402;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 20px 20px 0 0;
+            margin-top: -20px;
         }
 
-        .login-container input {
-            padding: 12px 15px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-            transition: box-shadow 0.3s ease;
+        .map-container {
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            margin: 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }*/
+
+        .map-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center content vertically and horizontally */
+            width: 100%;
+            height: 100vh; /* Full screen height */
+            padding: 0;
+            margin: 0;
+            background: #ff8402; /* Retain the background color */
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0; /* Remove rounded corners for full-screen effect */
+            box-shadow: none; /* Remove shadow for a seamless look */
+            overflow: hidden;
+        }
+        
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1px 0;
+            position: static;
+            bottom: 00;
+            width: 100%;
         }
 
-        .login-container input:focus {
-            box-shadow: 0 0 8px rgba(255, 132, 2, 0.5);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .login-container button {
-            padding: 12px 15px;
+        .map-section {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .full-screen-button {
+            margin-top: 20px;
+            padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background: #FF9933; /* Saffron color for the button */
+            background: #ff8402;
             border: none;
-            border-radius: 8px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background-color 0.3s, transform 0.3s;
+            transform: translateY(-50px);
         }
-
-        .login-container button:hover {
+    
+        .full-screen-button:hover {
             background: #eca960;
+            transform: scale(1.05);
+            transform: translateY(-50px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
         }
 
-        .login-container p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 15px;
-        }
-
-        .login-container a {
-            color: #FF9933; /* Saffron color for the link */
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .login-container a:hover {
-            text-decoration: underline;
-        }
-
-        .error-message {
-            color: #ff4d4d;
-            margin-top: 15px;
-            font-size: 1rem;
-        }
+        
     </style>
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="register.html">Sign up</a></p>
-        <p id="errorMessage" class="error-message"></p>
+
+    <div class="splash-screen" id="splash-screen">
+        <img src="Smart School Dashboard Logo JPG.png" alt="Splash Image" /> <!-- Replace with your image URL -->
     </div>
 
+
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>Welcome to the Nagar Prathmik Sikshan Samiti</h1>
+                <p>Your gateway to smarter school management and analytics</p>
+                <a class="hero-button" style="padding: 15px 25px; font-size: 16px;" id="exploreBtn">Explore the Dashboard</a> <!--https://mandevgames.github.io/0100101010010100101/ -->
+
+            </div>
+            <img src="C:\Users\MEET\Desktop\Welcome to AMC School Board_files\logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
+            <img src="logo_08.jpg" alt="Smart School Logo" class="top-right-logo">
+        </div>
+    </header>
+    
+    
+    <nav>
+        <a href="#home">Home</a>
+        <a href="Aboutus.html">About</a>
+        <a href="https://mandevgames.github.io/0100101010010100101/" target="_blank">Dashboard</a>
+        <!-- <a href="login.html">Login</a> -->
+        <!-- <a href="#features">Features</a> -->
+        <a href="login.html">Logout</a>
+
+    </nav>
+
+    <div class="stats-section">
+    <h2>Our Impact</h2>
+    <p>Here are some key statistics about our progress in transforming education:</p>
+    <div class="stats-container">
+        <div class="stat">
+            <h3><span id="stat1">0</span></h3>
+            <p>Total Municipal Schools</p>
+        </div>
+        
+        <div class="stat">
+            <h3><span id="stat2">0</span></h3>
+            <p>Smart Schools</p>
+        </div>
+        
+        <div class="stat">
+            <h3><span id="stat3">0</span>%</h3>
+            <p>Schools Upgraded to Smart</p>
+        </div>
+    </div>
+</div>
+
+
+    <div id="map" class="map-section">
+        <h2>Explore Ahmedabad Municipal Smart Schools</h2>
+        <p>Below is the map of Ahmedabad to help you explore our smart schools.</p>
+        <div class="map-container">
+            <iframe
+                src="https://mandevgames.github.io/0100101010010100101/"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <button class="full-screen-button" onclick="goFullScreen()">View Full Screen</button>
+    </div>
+
+
+   
+    <footer>
+        <p>&copy; 2025 Smart School Dashboard. All rights reserved.</p>
+    </footer>
+
+
     <script>
-        // Predefined email and password for login
-        const predefinedEmail = 'user@example.com';
-        const predefinedPassword = 'pass123';
+        // Hide the splash screen after 3 seconds
+        setTimeout(function () {
+            document.getElementById("splash-screen").style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable body scroll
+        }, 2000);
 
-        // Handle form submission
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent form from submitting the default way
-
-            // Get the values entered by the user
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Check if the credentials match the predefined ones
-            if (email === predefinedEmail && password === predefinedPassword) {
-                // Redirect to the home page (index.html) if login is successful
-                window.location.href = 'login.html';
-            } else {
-                // Display an error message if the credentials are incorrect
-                document.getElementById('errorMessage').textContent = 'Invalid email or password. Please try again.';
-            }
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+            document.querySelector('#map').scrollIntoView({ behavior: 'smooth' });
         });
+
+        function goFullScreen() {
+            // Redirect to a dedicated full-screen map page
+            window.location.href = "https://mandevgames.github.io/0100101010010100101/";
+        }
+		
+		function animateValue(obj, start, end, duration) {
+			let startTimestamp = null;
+			const step = (timestamp) => {
+			if (!startTimestamp) startTimestamp = timestamp;
+			const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+			const currentValue = Math.floor(progress * (end - start) + start);
+
+			obj.textContent = currentValue;
+
+				if (progress < 1) {
+					window.requestAnimationFrame(step);
+				}
+			};
+			window.requestAnimationFrame(step);
+		}
+
+		const obj1 = document.getElementById("stat1");
+		animateValue(obj1, 0, 281, 5000);
+
+		const obj2 = document.getElementById("stat2");
+		animateValue(obj2, 0, 128, 5000);
+
+		const obj3 = document.getElementById("stat3");
+		animateValue(obj3, 0, 46, 5000);
+          
     </script>
+
+    
 </body>
 
 </html>
