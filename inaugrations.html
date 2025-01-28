@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inaugration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .caption {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery-container">
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="Sample 0.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 1.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 2.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 3.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 4.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 5.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 6.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 7.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 8.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 9.jpg" ">
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 10.jpg" ">
+            <div class="caption"></div>
+        </div>
+
+        <!-- <div class="gallery-item">
+            <img src="Sample .jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 5.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 5.jpg" >
+            <div class="caption"></div>
+        </div>
+        <div class="gallery-item">
+            <img src="Sample 5.jpg" >
+            <div class="caption"></div>
+        </div><div class="gallery-item">
+            <img src="Sample 5.jpg" >
+            <div class="caption"></div>
+        </div> -->
+
+    </div>
+</div>
+
+</body>
+</html>

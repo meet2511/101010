@@ -102,7 +102,7 @@
 			padding: 120px 50px;
 			text-align: center;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			transition: background-image 1.5s ease-in; /* Smooth transition for background change */
+			transition: background-image 1.5s ease-out; /* Smooth transition for background change */
 		}
         
         header h1 {
@@ -148,6 +148,18 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
         nav a {
             color: #333;
             text-decoration: none;
@@ -156,10 +168,51 @@
             border-radius: 25px;
             transition: background-color 0.3s, color 0.3s;
         }
-
+    
         nav a:hover {
             background-color: #ff8402;
+            color: white;
         }
+    
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+    
+        /* Dropdown menu */
+        .dropdown-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            min-width: 150px;
+            z-index: 1000;
+        }
+    
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+    
+        .dropdown-menu a:hover {
+            background-color: #ff8402;
+            color: white;
+        }
+    
+        /* Show dropdown menu on click */
+        .dropdown.show .dropdown-menu {
+            display: block;
+        }
+
+
         .stats-section {
             text-align: center;
             padding: 50px 20px;
@@ -345,13 +398,19 @@
     
     <nav>
         <a href="#home">Home</a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Photo Gallery</a>
+            <div class="dropdown-menu">
+                <a href="360view.html">360 view</a>
+                <a href="inaugrations.html">Inaugration</a>
+                <!-- <a href="#gallery3">Gallery 3</a> -->
+            </div>
+        </div>
         <a href="Aboutus.html">About</a>
         <a href="https://mandevgames.github.io/0100101010010100101/" target="_blank">Dashboard</a>
-        <!-- <a href="login.html">Login</a> -->
-        <!-- <a href="#features">Features</a> -->
         <a href="login.html">Logout</a>
-
     </nav>
+    
 
     <div class="stats-section">
     <h2>Our Impact</h2>
@@ -395,7 +454,7 @@
 
     <script>
 
-        const images = ['Sample 9.jpg', 'Sample 10.jpg', 'Sample 0.jpg', 'Sample 1.jpg', 'Sample 2.jpg', 'Sample 3.jpg', 'Sample 4.jpg', 'Sample 5.jpg', 'Sample 6.jpg', 'Sample 7.jpg', 'Sample 8.jpg'];		let currentIndex = 0;
+        const images = ['Sample 0.jpg', 'Sample 1.jpg', 'Sample 2.jpg', 'Sample 3.jpg', 'Sample 4.jpg', 'Sample 7.jpg', 'Sample 8.jpg'];		let currentIndex = 0;
 
         function changeBackgroundImage() 
 		{		
@@ -405,7 +464,7 @@
 
         changeBackgroundImage();
 
-		setInterval(changeBackgroundImage, 3500);
+		setInterval(changeBackgroundImage, 3000);
 
         // Hide the splash screen after 3 seconds
         setTimeout(function () {
@@ -446,6 +505,22 @@
 
 		const obj3 = document.getElementById("stat3");
 		animateValue(obj3, 0, 46, 5000);
+
+
+        // Add toggle functionality for the dropdown menu
+    document.querySelector('.dropdown-toggle').addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const dropdown = this.parentElement;
+        dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+        const dropdown = document.querySelector('.dropdown');
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
           
     </script>
 
