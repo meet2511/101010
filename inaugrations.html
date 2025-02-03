@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inaugration</title>
+    <title>Inauguration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@
 
         .gallery-container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 10px;
         }
 
@@ -29,6 +29,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
 
         .gallery-item img {
@@ -59,79 +60,114 @@
         .gallery-item:hover .caption {
             opacity: 1;
         }
+
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .close-btn, .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            top: 20px;
+            right: 20px;
+            transform: none;
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
     </style>
 </head>
 <body>
 
 <div class="gallery-container">
     <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="Sample 0.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 1.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 2.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 3.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 4.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 5.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 6.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 7.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 8.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 9.jpg" ">
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 10.jpg" ">
-            <div class="caption"></div>
-        </div>
-
-        <!-- <div class="gallery-item">
-            <img src="Sample .jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 5.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 5.jpg" >
-            <div class="caption"></div>
-        </div>
-        <div class="gallery-item">
-            <img src="Sample 5.jpg" >
-            <div class="caption"></div>
-        </div><div class="gallery-item">
-            <img src="Sample 5.jpg" >
-            <div class="caption"></div>
-        </div> -->
-
+        <div class="gallery-item"><img src="Sample 0.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 1.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 2.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 3.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 4.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 5.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 6.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 7.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 8.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 9.jpg" ></div>
+        <div class="gallery-item"><img src="Sample 10.jpg" ></div>
     </div>
 </div>
+
+<div class="lightbox" id="lightbox">
+    <button class="close-btn" onclick="closeLightbox()">&times;</button>
+    <button class="prev-btn" onclick="prevImage()">&#10094;</button>
+    <img id="lightbox-img">
+    <button class="next-btn" onclick="nextImage()">&#10095;</button>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            currentIndex = index;
+            openLightbox(img.src);
+        });
+    });
+
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImg.src = images[currentIndex].src;
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImg.src = images[currentIndex].src;
+    }
+</script>
 
 </body>
 </html>
